@@ -1,0 +1,25 @@
+#include <errno.h>
+#include <sys/types.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <dirent.h>
+
+int main(void){
+  DIR *dirp;
+  struct dirent *p;
+
+  if( (dipr = opendir(".")) == NULL ){
+    perror("opendir");
+    exit(1);
+  }
+
+  errno = 0;
+  while( (p = readdir(dirp)) != NULL)
+    printf("%s\n", p->d_name);
+  if(errno != 0){
+    perror("readdir");
+    exit(1);
+  }
+
+  return 0;
+}

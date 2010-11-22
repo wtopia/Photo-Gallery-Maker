@@ -1,0 +1,99 @@
+#include <stdio.h>
+#include <stdlib.h>^
+
+void doctype(void){
+  printf("<!DOCTYPE html>\n");
+}
+
+void html(int isHead){
+  isHead ? printf("<html>\n") : printf("</html>\n");
+}
+
+void head(isHead){
+  isHead ? printf("<head>\n") : printf("</head>\n");
+}
+
+void meta(char *charset){
+  printf("<meta charset=%s>\n", charset);
+}
+
+void title(char *title){
+  printf("<title>%s</title>\n", title);
+}
+
+void scpt(char *src){
+  printf("<script src=\"%s\"></script>\n",src);
+}
+
+void style(void){
+  printf("<style>\n");
+  printf("</style>\n");
+}
+
+void body(int isHead){
+  isHead ? printf("<body>\n") : printf("</body>\n");
+}
+
+/*void div(char *name, char *content){
+  printf("<div %s = \" %s \">\n",name,content);
+}
+vidはシステム関数
+*/
+
+
+void h(int n, char *content){
+  printf("<h%d> %s </h%d>\n",n,content,n);
+}
+
+
+int image(char *file){
+  printf("<img src=\"%s\">\n",file);
+}
+
+
+int usage(void){
+  fprintf(stderr, "Usage: ./a.out -d Photos-Directory -theme [ga1 | ga2]\n");
+  return -1;
+}
+
+int main(int argc, char *argv[]){
+
+#define cmd "/bin/ls"
+#define para "-1"
+#define photos_dir ARGV[2]
+
+  char *title_str = "photos testing";
+  char *charset = "utf-8";
+
+  if(argc != 5){
+    usage();
+    return -1;
+  }
+  
+  doctype();
+  html(1);
+  head(1);
+  meta(charset);
+  title(title_str);
+  scpt("jquery-1.4.3.min.js");
+  scpt("galleria.js");
+  printf("<link rel=\"stylesheet\" type=\"text/css\" href=\"test.css\">\n");
+  head(0);
+  body(1);
+  //  div("class","content");
+  //  div("id","galleria");
+  printf("<div class=\"content\">\n");
+  h(2,"リャンリャン");
+  printf("<div id=\"galleria\">\n");
+
+  while()
+
+  printf("</div>\n");
+  printf("</div>\n");
+  printf("first test\n");
+  scpt("test.js");
+  body(0);
+  html(0);
+
+  return 0;
+}
